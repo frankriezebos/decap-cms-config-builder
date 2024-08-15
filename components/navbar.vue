@@ -1,11 +1,29 @@
 <template>
     <div class="navbar">
-        <h1>Decap CMS config.yml builder</h1>
+        <p class="navbar__title">Decap CMS config.yml builder</p>
+
+        <nav>
+            <ul class="navbar__nav-list">
+                <li
+                    v-for="(menuItem, menuItemID) in menuItems"
+                    :key="menuItemID"
+                >
+                    <NuxtLink
+                        :to="menuItem.link"
+                        :title="menuItem.label"
+                        class="navbar__nav-list__item"
+                    >
+                        {{ menuItem.label }}
+                    </NuxtLink>
+                </li>
+            </ul>
+        </nav>
+
         <a
             href="https://decapcms.org/"
             target="_blank"
         >
-            Visit Decap CMS website <svg
+            Decap CMS website <svg
                 width="14"
                 height="10"
                 viewBox="0 0 18 14"
@@ -22,3 +40,11 @@
         </a>
     </div>
 </template>
+
+<script setup>
+const menuItems = [
+    { label: 'General settings', link: "/" },
+    { label: 'Collections builder', link: "/collections-builder" },
+    { label: 'About DecapCMS', link: "/about-decap-cms" },
+];
+</script>
