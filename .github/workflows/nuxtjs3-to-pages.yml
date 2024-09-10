@@ -8,7 +8,7 @@
     # Your repo name
     reponame: decap-cms-config-builder
     # Your Github token
-    token: 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
+    token: ${{ secrets.TOKEN }}
     # Your git commit email
     gitemail: contact@frankriezebos.nl
     # Your git commit name
