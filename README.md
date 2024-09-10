@@ -3,7 +3,7 @@ Not finished yet!
 
 But this will be a GUI to generate a config.yml for Decap CMS. I'm not affiliated with them by the way. Decap CMS is a headless CMS that is a easy-to-use CMS for end users. It saves all the content within your Git repository. So you will always have a backup of data and it is privacy friendly as well. Without a GUI, you would have to generate and edit a config.yml manually in the code. But with a GUI it is more easier. Soon, when it is released, you can generate collections with files and fields, and you can import your current config.yml and make changes.
 
-# Nuxt 3 Minimal Starter
+# Setup locally yourself using Nuxt.js
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
