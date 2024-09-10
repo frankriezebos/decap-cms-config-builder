@@ -2,23 +2,37 @@
   --primary-color: rgb(58, 105, 199);
   --secondary-color: rgb(226, 243, 255);
   --bg-color: #eff0f4;
-  --text-color: #2c2c2c;
+  --title-color: #000000;
+  --text-color: #838383;
 }
 
 html {
   background-color: var(--bg-color);
   font-family: sans-serif;
+  overflow-x: hidden;
+  scroll-padding-top: 55px;
+  scroll-padding-bottom: 55px;
 }
 
 body {
   margin: 0;
   color: var(--text-color);
+  line-height: 1.5;
 }
 
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+p,
+ul {
+  margin: 0;
+}
+
+li {
+  padding-bottom: 5px;
 }
 
 a {
@@ -103,6 +117,9 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  top: 0;
+  position: sticky;
+  z-index: 10;
 
   &__title {
     margin: 0;
@@ -160,7 +177,7 @@ button {
 .page-inner {
   display: flex;
   gap: 30px;
-  padding: 30px 20px;
+  padding: 30px 20px 85px 20px;
 }
 
 .sections {
@@ -193,7 +210,7 @@ button {
 
   &__inner {
     display: flex;
-    align-items: center;
+    // align-items: center;
     gap: 20px;
     flex-wrap: wrap;
     flex-direction: column;
@@ -209,8 +226,10 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+strong {
   margin: 0;
+  color: var(--title-color);
 }
 
 h1 {
@@ -225,7 +244,8 @@ h3 {
   font-size: 14px;
 }
 
-input {
+input,
+select {
   padding: 8px 0 8px 0;
   border-top: none;
   border-left: none;
@@ -239,7 +259,8 @@ input {
   }
 }
 
-label {
+label,
+.label {
   opacity: 0.7;
   text-transform: uppercase;
   font-size: 12px;
@@ -255,6 +276,7 @@ button {
   display: flex;
   justify-content: center;
   gap: 5px;
+  width: fit-content;
 
   svg {
     path {
@@ -311,6 +333,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    width: 100%;
   }
 
   &__checkbox-field {
@@ -320,10 +343,55 @@ button {
   }
 }
 
+.file {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  &__fields {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+  }
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.docs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-wrap: unset;
+    flex-direction: unset;
+  }
+
+  &__section {
+    width: 100%;
+  }
+
+  &__images {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
+
 .footer {
   text-align: center;
   box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;

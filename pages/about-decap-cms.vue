@@ -5,7 +5,13 @@
                 <div class="sections">
                     <div class="section">
                         <h2>About Decap CMS</h2>
-                        <p></p>
+                        <p>Decap CMS is a headless CMS that is easy to understand for the end user. No distractions. The
+                            data from the
+                            CMS is saved within the Git repository. That means that there
+                            is always a backup of all data and that the data is not stored on third-party servers. It is
+                            build by Netlify and now acquired and maintained by PM TechHub. Building a config.yml
+                            without a GUI can take more time for larger datasets. That's why I decided to build a GUI
+                            for it.</p>
                     </div>
                 </div>
             </div>
@@ -17,7 +23,7 @@
 import { ref, onMounted, computed } from "vue";
 import yaml from "js-yaml";
 
-const collections = ref('');
+const Collections = ref('');
 const addCollectionLabel = ref('');
 const addCollection = ref(false);
 const addCollectionSection = ref(false);
@@ -30,7 +36,7 @@ const config = ref({
     backend: { name: "git-gateway", branch: "main" },
     media_folder: "public/upload",
     public_folder: "/upload",
-    collections: [],
+    Collections: [],
 });
 
 // Create a computed property
@@ -54,23 +60,23 @@ const slugifyAddCollectionFolder = computed({
 
 /* ADD COLLECTION - START */
 function saveCollectionToConfig() {
-    config.value.collections.push({
+    config.value.Collections.push({
         name: "",
         label: "",
         fields: [],
         folder: "", // Initialize with empty string for user input
         create: false, // Initialize as unchecked
         slug: "", // Initialize with empty string for user input
-        files: [], // Initialize files array to enable file addition
+        Files: [], // Initialize Files array to enable File addition
         collapsed: true,
     });
 }
 
-function addField(collection) {
-    if (!collection.fields) {
-        collection.fields = [];
+function addField(Collection) {
+    if (!Collection.fields) {
+        Collection.fields = [];
     }
-    collection.fields.push({
+    Collection.fields.push({
         name: "",
         label: "",
         widget: "string",

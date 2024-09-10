@@ -43,8 +43,8 @@
 
 <script setup>
 const menuItems = [
-    { label: 'General settings', link: "/" },
-    { label: 'Collections builder', link: "/collections-builder" },
+    { label: 'Configurator', link: "/" },
+    { label: 'How to', link: "/how-to" },
     { label: 'About DecapCMS', link: "/about-decap-cms" },
 ];
 </script>
