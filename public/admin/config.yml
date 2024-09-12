@@ -1,0 +1,383 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: public/upload
+public_folder: /upload
+seo:
+  name: SEOmetaData
+  label: SEO
+  widget: object
+  fields:
+    - name: metaTitle
+      label: SEO Title
+      widget: string
+      default: '{{ title }}'
+      required: true
+    - name: metaDescription
+      label: SEO Description
+      widget: string
+      pattern:
+        - .{20,160}
+        - between 20 and 160 characters
+      required: true
+      hint: must be between 20 and 160 characters
+    - name: metaImage
+      label: SEO image
+      widget: image
+    - name: keywords
+      label: keywords
+      widget: string
+      hint: keywords are comma seperated
+      required: false
+collections:
+  - name: globalContent
+    label: Global content
+    files:
+      - name: buttons
+        label: Buttons
+        file: content/site/buttons.md
+        fields:
+          - label: next
+            name: next
+            widget: string
+          - label: previous
+            name: previous
+            widget: string
+          - label: close
+            name: close
+            widget: string
+          - label: 'article: more'
+            name: article
+            widget: string
+            default: read more
+          - label: 'form: send'
+            name: send
+            widget: string
+          - name: read_more
+            label: Read more
+            widget: string
+      - name: cta_banner
+        label: CTA banner
+        file: content/site/cta-banner.md
+        fields:
+          - name: title
+            label: Title
+            widget: string
+            required: true
+          - name: text
+            label: Text
+            widget: text
+            required: true
+          - name: button_1_label
+            label: Button 1 label
+            widget: string
+            required: true
+          - name: button_1_link
+            label: Button 1 link
+            widget: string
+            required: true
+          - name: button_2_label
+            label: Button 2 label
+            widget: string
+            required: false
+          - name: button_2_link
+            label: Button 2 link
+            widget: string
+            required: false
+  - label: Repeaters
+    name: repeaters
+    files:
+      - label: References
+        name: references
+        file: content/site/references.md
+        fields:
+          - label: References
+            name: references
+            widget: list
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - label: Reference
+                name: reference
+                widget: text
+              - label: Order
+                name: order
+                widget: number
+          - name: references_banner_title
+            label: Banner title
+            widget: string
+            required: false
+      - label: CV
+        name: cv
+        file: content/site/cv.md
+        fields:
+          - label: Work experience
+            name: work_experience
+            widget: list
+            fields:
+              - name: title
+                label: Title
+                widget: string
+              - name: years
+                label: Years
+                widget: string
+          - label: Education
+            name: education
+            widget: list
+            fields:
+              - name: title
+                label: Title
+                widget: string
+              - name: years
+                label: Years
+                widget: string
+      - label: Skills
+        name: skills
+        file: content/site/skills.md
+        fields:
+          - label: Skills
+            name: skills
+            widget: list
+            fields:
+              - name: skill
+                label: Skill
+                widget: string
+      - name: socials
+        label: Socials
+        file: content/site/socials.md
+        fields:
+          - name: socials
+            label: Socials
+            widget: list
+            required: false
+            fields:
+              - name: label
+                label: Label
+                widget: string
+                required: false
+              - name: link
+                label: Link
+                widget: string
+                required: false
+              - name: icon
+                label: Icon
+                widget: file
+                required: false
+  - label: Diensten
+    name: diensten
+    folder: content/diensten
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - name: order
+        label: Order
+        widget: number
+      - name: title
+        label: Title
+        widget: string
+      - name: slug
+        label: Slug
+        widget: string
+      - name: short_excerpt
+        label: Short excerpt
+        widget: text
+      - name: excerpt
+        label: Excerpt
+        widget: text
+      - name: content_first_half
+        label: Content first half
+        widget: markdown
+      - name: featured_image
+        label: Featured image
+        widget: image
+      - name: content_second_half
+        label: Content second half
+        widget: markdown
+      - name: icon
+        label: Icon
+        widget: image
+      - label: Gallery
+        name: gallery
+        widget: list
+        fields:
+          - name: image
+            label: Image
+            widget: image
+      - name: seo
+        label: SEO
+        widget: object
+        fields:
+          - name: metaTitle
+            label: SEO Title
+            widget: string
+            default: '{{ title }}'
+            required: true
+          - name: metaDescription
+            label: SEO Description
+            widget: string
+            pattern:
+              - .{20,160}
+              - between 20 and 160 characters
+            required: true
+            hint: must be between 20 and 160 characters
+          - name: metaImage
+            label: SEO image
+            widget: image
+          - name: keywords
+            label: keywords
+            widget: string
+            hint: keywords are comma separated
+            required: false
+  - name: pages
+    label: Pages
+    files:
+      - name: home
+        label: Home
+        file: content/pages/home.md
+        fields:
+          - name: hero_title
+            label: Hero title
+            widget: string
+          - name: button_1_label
+            label: Button 1 label
+            widget: string
+          - name: button_1_link
+            label: Button 1 link
+            widget: string
+          - name: button_1_class
+            label: Button 1 class
+            widget: string
+            required: false
+          - name: button_2_label
+            label: Button 2 label
+            widget: string
+          - name: button_2_link
+            label: Button 2 link
+            widget: string
+          - name: button_2_class
+            label: Button 2 class
+            widget: string
+            required: false
+          - name: profile_pic
+            label: Profile picture
+            widget: image
+          - name: hero_image
+            label: Hero image
+            widget: image
+          - name: services_banner_title
+            label: Services banner title
+            widget: string
+          - name: seo
+            label: SEO
+            widget: object
+            fields:
+              - name: metaTitle
+                label: SEO Title
+                widget: string
+                default: '{{ title }}'
+                required: true
+              - name: metaDescription
+                label: SEO Description
+                widget: string
+                pattern:
+                  - .{20,160}
+                  - between 20 and 160 characters
+                required: true
+                hint: must be between 20 and 160 characters
+              - name: metaImage
+                label: SEO image
+                widget: image
+              - name: keywords
+                label: keywords
+                widget: string
+                hint: keywords are comma separated
+                required: false
+      - name: about
+        label: About
+        file: content/pages/about.md
+        fields:
+          - name: page_title
+            label: Page title
+            widget: string
+          - name: section_title
+            label: Section title
+            widget: string
+          - name: section_content
+            label: Section text
+            widget: text
+          - name: button_1_link
+            label: Button 1 link
+            widget: string
+          - name: button_1_class
+            label: Button 1 class
+            widget: string
+            required: false
+          - name: seo
+            label: SEO
+            widget: object
+            fields:
+              - name: metaTitle
+                label: SEO Title
+                widget: string
+                default: '{{ title }}'
+                required: true
+              - name: metaDescription
+                label: SEO Description
+                widget: string
+                pattern:
+                  - .{20,160}
+                  - between 20 and 160 characters
+                required: true
+                hint: must be between 20 and 160 characters
+              - name: metaImage
+                label: SEO image
+                widget: image
+              - name: keywords
+                label: keywords
+                widget: string
+                hint: keywords are comma separated
+                required: false
+          - name: button_1_label
+            label: Button 1 label
+            widget: string
+  - name: portfolio
+    label: Portfolio
+    folder: content/portfolio
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: order
+        label: Order
+        widget: number
+      - name: year
+        label: Year
+        widget: number
+        required: false
+      - name: excerpt
+        label: Excerpt
+        widget: text
+      - name: featured_image
+        label: Featured image
+        widget: image
+      - name: content_first_half
+        label: Content first half
+        widget: markdown
+      - name: content_second_half
+        label: Content second half
+        widget: markdown
+        required: false
+      - name: gallery
+        label: Gallery
+        widget: list
+        fields:
+          - name: image
+            label: Image
+            widget: image
+      - name: url
+        label: URL
+        widget: string
+        required: false

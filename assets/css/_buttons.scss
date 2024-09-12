@@ -1,0 +1,46 @@
+button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  cursor: pointer;
+  border: none;
+  transition: all 200ms;
+  padding: 7px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  svg {
+    path {
+      transition: all 200ms;
+      fill: var(--primary-color);
+    }
+  }
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+
+    svg {
+      path {
+        fill: var(--secondary-color);
+      }
+    }
+  }
+
+  &.button--small {
+    padding: 8px;
+  }
+}
+
+.button {
+  &__group {
+    display: flex;
+    gap: 15px;
+  }
+}

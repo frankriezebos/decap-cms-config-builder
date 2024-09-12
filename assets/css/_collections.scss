@@ -1,0 +1,56 @@
+.collection {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  &__details {
+    padding-top: 20px;
+  }
+
+  &__fields {
+    position: relative;
+
+    &::before {
+      content: "";
+      height: 100%;
+      width: 1px;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      left: 1px;
+      top: 25px;
+      bottom: 0;
+    }
+
+    &__header {
+      padding-bottom: 10px;
+    }
+
+    .input__fields {
+      display: flex;
+      gap: 10px;
+    }
+
+    &__button {
+      margin-top: 10px;
+      margin-bottom: 15px;
+      margin-left: 50px;
+    }
+
+    .draggable-field {
+      position: relative;
+      padding-left: 20px;
+
+      &::before {
+        content: "";
+        height: 1px;
+        width: 10px;
+        background-color: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        left: 2px;
+        top: 15px;
+      }
+    }
+  }
+}

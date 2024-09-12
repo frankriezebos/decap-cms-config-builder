@@ -1,0 +1,22 @@
+.page-wrapper {
+  display: flex;
+  gap: 30px;
+  min-height: calc(100vh - 50px - 50px);
+
+  > div {
+    width: 100%;
+  }
+}
+
+.page-inner {
+  display: flex;
+  gap: 30px;
+  padding: 30px 20px;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  @media (min-width: 1025px) {
+    flex-wrap: unset;
+    flex-direction: unset;
+  }
+}

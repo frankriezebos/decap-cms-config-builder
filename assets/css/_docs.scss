@@ -1,0 +1,24 @@
+.docs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-wrap: unset;
+    flex-direction: unset;
+  }
+
+  &__section {
+    width: 100%;
+  }
+
+  &__images {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
