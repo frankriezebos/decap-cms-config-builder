@@ -7,13 +7,22 @@
   display: flex;
   gap: 10px;
   justify-content: center;
+  flex-direction: column;
+
+  @media (min-width: 1025px) {
+    flex-direction: unset;
+    justify-content: space-between;
+  }
 
   p {
     margin: 0;
   }
 
   &__section {
-    display: flex;
-    gap: 5px;
+    @media (min-width: 1025px) {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+    }
   }
 }

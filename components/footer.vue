@@ -23,8 +23,6 @@
       </p>
     </div>
 
-    <div class="footer__section">-</div>
-
     <div class="footer__section">
       <p>Decap CMS is Open Source and maintained by</p>
       <a href="https://decapcms.org" target="_blank">

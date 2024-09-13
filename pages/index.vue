@@ -203,12 +203,14 @@
                 >
                   <h5>File #{{ fileIndex + 1 }}: {{ file.label }}</h5>
 
-                  <div class="input__fields">
+                  <div class="input__fields file__input-fields">
                     <div class="input__field">
+                      <label>File label</label>
                       <input v-model="file.label" placeholder="File Label" />
                     </div>
 
                     <div class="input__field">
+                      <label>File name</label>
                       <input
                         v-model="file.name"
                         :placeholder="customCamelize(file.label)"
@@ -216,6 +218,7 @@
                     </div>
 
                     <div class="input__field">
+                      <label>File path</label>
                       <input v-model="file.file" placeholder="File Path" />
                     </div>
                   </div>
@@ -308,7 +311,7 @@
 
                         <!-- Display subfields for each file field -->
                         <div v-if="field.fields">
-                          <h7>{{ field.label }} Subfields:</h7>
+                          <h6>{{ field.label }} Subfields:</h6>
 
                           <ul class="subfields">
                             <li
@@ -418,10 +421,10 @@
             </div>
 
             <!-- Collection fields -->
-            <div v-if="collection.fields" class="collection__fields">
+            <ul v-if="collection.fields" class="collection__fields">
               <h3 class="collection__fields__header">Collection fields:</h3>
 
-              <div
+              <li
                 v-for="(field, fieldIndex) in collection.fields"
                 :key="fieldIndex"
                 draggable="true"
@@ -499,9 +502,9 @@
                   </div>
 
                   <!-- Display subfields if they exist -->
-                  <div v-if="field.fields" class="subfields">
+                  <ul v-if="field.fields" class="subfields">
                     <strong>{{ field.label }} subfields</strong>
-                    <div
+                    <li
                       v-for="(subfield, subfieldIndex) in field.fields"
                       :key="subfieldIndex"
                       class="input__fields"
@@ -538,8 +541,8 @@
                           <option value="select">Select</option>
                         </select>
                       </div>
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
 
                   <button
                     v-if="field.widget == 'list' || field.widget == 'object'"
@@ -567,8 +570,8 @@
                     <strong> SEO Fields (referenced) </strong>
                   </p>
                 </template>
-              </div>
-            </div>
+              </li>
+            </ul>
 
             <button @click="addField(collection)" class="button">
               <svg
