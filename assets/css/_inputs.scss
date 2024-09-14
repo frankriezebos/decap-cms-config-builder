@@ -94,7 +94,6 @@ label,
     display: flex;
     gap: 10px;
     align-items: center;
-    justify-content: center;
   }
 }
 
@@ -104,10 +103,13 @@ label,
 }
 
 .subfields {
-  margin-left: 30px;
   padding-top: 20px;
   position: relative;
-  padding-left: 20px;
+
+  &__wrapper {
+    padding-top: 10px;
+    padding-left: 35px;
+  }
 
   &::before {
     content: "";

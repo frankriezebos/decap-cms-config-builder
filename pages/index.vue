@@ -421,9 +421,9 @@
             </div>
 
             <!-- Collection fields -->
-            <ul v-if="collection.fields" class="collection__fields">
-              <h3 class="collection__fields__header">Collection fields:</h3>
+            <h3 class="collection__fields__header">Collection fields:</h3>
 
+            <ul v-if="collection.fields" class="collection__fields">
               <li
                 v-for="(field, fieldIndex) in collection.fields"
                 :key="fieldIndex"
@@ -502,47 +502,93 @@
                   </div>
 
                   <!-- Display subfields if they exist -->
-                  <ul v-if="field.fields" class="subfields">
+                  <div v-if="field.fields" class="subfields__wrapper">
                     <strong>{{ field.label }} subfields</strong>
-                    <li
-                      v-for="(subfield, subfieldIndex) in field.fields"
-                      :key="subfieldIndex"
-                      class="input__fields"
-                    >
-                      <div class="input__field">
-                        <input
-                          v-model="subfield.name"
-                          placeholder="Subfield Name"
-                        />
-                      </div>
-                      <div class="input__field">
-                        <input
-                          v-model="subfield.label"
-                          placeholder="Subfield Label"
-                        />
-                      </div>
-                      <div class="input__field">
-                        <select v-model="subfield.widget">
-                          <option value="string">String</option>
-                          <option value="text">Text</option>
-                          <option value="datetime">DateTime</option>
-                          <option value="markdown">Markdown</option>
-                          <option value="boolean">Boolean</option>
-                          <option value="code">Code</option>
-                          <option value="color">Color</option>
-                          <option value="file">File</option>
-                          <option value="hidden">Hidden</option>
-                          <option value="image">Image</option>
-                          <option value="list">List</option>
-                          <option value="map">Map</option>
-                          <option value="number">Number</option>
-                          <option value="object">Object</option>
-                          <option value="relation">Relation</option>
-                          <option value="select">Select</option>
-                        </select>
-                      </div>
-                    </li>
-                  </ul>
+
+                    <div class="fields__header">
+                      <label>Field label</label>
+                      <label>Field name</label>
+                      <label>Field label</label>
+                      <label>Required</label>
+                    </div>
+
+                    <ul class="subfields">
+                      <li
+                        v-for="(subfield, subfieldIndex) in field.fields"
+                        :key="subfieldIndex"
+                        class="input__fields draggable-field"
+                        draggable="true"
+                        @dragstart="dragStart($event, subfieldIndex)"
+                        @drop="drop($event, subfieldIndex)"
+                        @dragover.prevent
+                      >
+                        <div class="draggable-field__inner">
+                          <div class="draggable-field__icon">
+                            <svg
+                              width="6"
+                              height="10"
+                              viewBox="0 0 6 10"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M6 4H0L3 0L6 4ZM0 6H6L3 10L0 6Z"
+                                fill="black"
+                              />
+                            </svg>
+                          </div>
+
+                          <div class="input__field">
+                            <input
+                              v-model="subfield.label"
+                              placeholder="Subfield Label"
+                            />
+                          </div>
+
+                          <div class="input__field">
+                            <input
+                              v-model="subfield.name"
+                              :placeholder="customCamelize(subfield.label)"
+                            />
+                          </div>
+
+                          <div class="input__field">
+                            <select v-model="subfield.widget">
+                              <option value="string">String</option>
+                              <option value="text">Text</option>
+                              <option value="datetime">DateTime</option>
+                              <option value="markdown">Markdown</option>
+                              <option value="boolean">Boolean</option>
+                              <option value="code">Code</option>
+                              <option value="color">Color</option>
+                              <option value="file">File</option>
+                              <option value="hidden">Hidden</option>
+                              <option value="image">Image</option>
+                              <option value="list">List</option>
+                              <option value="map">Map</option>
+                              <option value="number">Number</option>
+                              <option value="object">Object</option>
+                              <option value="relation">Relation</option>
+                              <option value="select">Select</option>
+                            </select>
+                          </div>
+
+                          <div class="input__field">
+                            <div class="checkbox-container">
+                              <input
+                                type="checkbox"
+                                v-model="subfield.required"
+                                :id="'required-' + subfieldIndex"
+                              />
+                              <label :for="'required-' + subfieldIndex"
+                                >Required</label
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
 
                   <button
                     v-if="field.widget == 'list' || field.widget == 'object'"
