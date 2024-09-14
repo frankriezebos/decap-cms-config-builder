@@ -50,6 +50,8 @@ label,
     display: grid;
     gap: 15px;
     align-items: center;
+    width: 100%;
+
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
     }
@@ -76,10 +78,6 @@ label,
 
     label {
       width: 100%;
-
-      &:last-of-type {
-        width: 95px;
-      }
     }
   }
 }
@@ -94,6 +92,7 @@ label,
     display: flex;
     gap: 10px;
     align-items: center;
+    width: 100%;
   }
 }
 
@@ -103,7 +102,6 @@ label,
 }
 
 .subfields {
-  padding-top: 20px;
   position: relative;
 
   &__wrapper {
@@ -118,7 +116,7 @@ label,
     background-color: rgba(0, 0, 0, 0.1);
     position: absolute;
     left: 1px;
-    top: 25px;
+    top: -20px;
     bottom: 0;
   }
 
@@ -134,5 +132,10 @@ label,
       left: -18px;
       top: 15px;
     }
+  }
+
+  &__header {
+    padding-top: 10px;
+    padding-left: 40px;
   }
 }
