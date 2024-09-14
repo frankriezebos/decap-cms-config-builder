@@ -423,6 +423,13 @@
             <!-- Collection fields -->
             <h3 class="collection__fields__header">Collection fields:</h3>
 
+            <div class="fields__header collection__labels">
+              <label>Field label</label>
+              <label>Field name</label>
+              <label>Field label</label>
+              <label>Required</label>
+            </div>
+
             <ul v-if="collection.fields" class="collection__fields">
               <li
                 v-for="(field, fieldIndex) in collection.fields"
@@ -505,7 +512,7 @@
                   <div v-if="field.fields" class="subfields__wrapper">
                     <strong>{{ field.label }} subfields</strong>
 
-                    <div class="fields__header">
+                    <div class="fields__header subfields__header">
                       <label>Field label</label>
                       <label>Field name</label>
                       <label>Field label</label>
