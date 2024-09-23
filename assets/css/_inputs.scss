@@ -98,10 +98,15 @@ label,
 
 .subfields {
   position: relative;
+  padding-top: 10px;
 
   &__wrapper {
     padding-top: 10px;
-    padding-left: 35px;
+    padding-left: 32px;
+  }
+
+  &__label {
+    padding-left: 32px;
   }
 
   &::before {
@@ -111,7 +116,7 @@ label,
     background-color: rgba(0, 0, 0, 0.1);
     position: absolute;
     left: 1px;
-    top: -20px;
+    top: -21px;
     bottom: 0;
   }
 
@@ -121,10 +126,10 @@ label,
     &::before {
       content: "";
       height: 1px;
-      width: 10px;
+      width: 22px;
       background-color: rgba(0, 0, 0, 0.1);
       position: absolute;
-      left: -18px;
+      left: -38px;
       top: 15px;
     }
   }

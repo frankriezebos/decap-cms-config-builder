@@ -3,12 +3,12 @@
 
   &::before {
     content: "";
-    height: 100%;
+    height: calc(100% - 27px - 40px);
     width: 1px;
     background-color: rgba(0, 0, 0, 0.1);
     position: absolute;
     left: 1px;
-    top: 45px;
+    top: 27px;
     bottom: 0;
   }
 
@@ -58,6 +58,7 @@
     &__inner {
       padding-top: 10px;
       position: relative;
+      list-style: none;
 
       &::before {
         content: "";

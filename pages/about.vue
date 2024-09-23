@@ -20,12 +20,12 @@
 
             <p>
               Building a config.yml without a GUI can take more time. That's why
-              I decided to build a GUI for it!
+              I decided to build it for our convenience!
             </p>
 
             <p>
-              If you find some issues with this configurator, please make an
-              issue in the
+              If you find some issues with this configurator or if you miss
+              something, please make an issue in the
               <a
                 href="https://github.com/frankriezebos/decap-cms-config-builder/issues"
                 target="_blank"

@@ -310,8 +310,10 @@
                         </template>
 
                         <!-- Display subfields for each file field -->
-                        <div v-if="field.fields">
-                          <h6>{{ field.label }} Subfields:</h6>
+                        <div v-if="field.fields" class="subfields__wrapper">
+                          <h6 class="subfields__label">
+                            {{ field.label }} Subfields:
+                          </h6>
 
                           <ul class="subfields">
                             <li
@@ -675,6 +677,26 @@
                 {{ hasSEO(collection) ? "Remove SEO" : "Add SEO" }}
               </button>
             </div>
+
+            <button
+              @click="addField(collection)"
+              class="button"
+              v-if="collection.create == true && !collection.fields"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14 7.998H8V13.998H6V7.998H0V5.998H6V-0.00199986H8V5.998H14V7.998Z"
+                  fill="#232323"
+                />
+              </svg>
+              Add Field
+            </button>
           </div>
         </div>
       </div>
