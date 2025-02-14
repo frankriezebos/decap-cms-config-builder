@@ -3,29 +3,6 @@
     <div class="container">
       <div class="page-inner">
         <div class="sidebar">
-          <h2>Structure</h2>
-          <section class="section">
-            <ul>
-              <li><strong>Collections</strong> are like categories</li>
-              <li><strong>Files</strong> are like subcategories</li>
-              <li>
-                You can have multiple Files per Collection. Those are
-                pre-defined static datasets.
-                <span class="label">[screenshot 1,2]</span>
-              </li>
-              <li>
-                Or you can have the <strong>create</strong> option, so that you
-                can create detail pages, for example blog articles. Those are
-                dynamic datasets.
-                <span class="label">[screenshot 3]</span>
-              </li>
-              <li>
-                For List and Object fields you can make
-                <strong>subfields</strong>
-              </li>
-            </ul>
-          </section>
-
           <h3>More info</h3>
 
           <section class="section">
@@ -50,7 +27,34 @@
         </div>
 
         <div class="sections">
+          <h2>Structure</h2>
+          <section class="section">
+            <ul>
+              <li><strong>Collections</strong> are like categories</li>
+              <li><strong>Files</strong> are like subcategories</li>
+              <li>
+                You can have multiple Files per Collection. Those are
+                pre-defined static datasets.
+                <span class="label"
+                  >[screenshot <a href="#screenshot1">1</a> &
+                  <a href="#screenshot2">2</a>]</span
+                >
+              </li>
+              <li>
+                Or you can have the <strong>create</strong> option, so that you
+                can create detail pages, for example blog articles. Those are
+                dynamic datasets.
+                <span class="label">[screenshot 3]</span>
+              </li>
+              <li>
+                For List and Object fields you can make
+                <strong>subfields</strong>
+              </li>
+            </ul>
+          </section>
+
           <h2>Config example:</h2>
+
           <section class="section">
             <div class="docs">
               <div class="docs__section">
@@ -149,28 +153,6 @@
                         </ul>
                       </li>
                     </ul>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="docs__section">
-                <ul class="docs__images">
-                  <li>
-                    <p class="label">Screenshot 1: General Content</p>
-                    <img src="~/assets/img/general-content.png" />
-                  </li>
-
-                  <li>
-                    <p class="label">Screenshot 2: Pages</p>
-                    <img src="~/assets/img/pages.png" />
-                  </li>
-
-                  <li>
-                    <p class="label">
-                      Screenshot 3: Detail pages (for example Blogs or
-                      Portfolio)
-                    </p>
-                    <img src="~/assets/img/detail-pages.png" />
                   </li>
                 </ul>
               </div>
