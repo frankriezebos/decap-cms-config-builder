@@ -975,12 +975,12 @@ function toggleTab(file, collection) {
 }
 
 // Ensure to call this function in the right context where 'collection' is defined
-collection.files.forEach((f, index) => {
-  if (index === 0) {
-    f.open = true; // Open first file tab
-  } else {
-    f.open = false; // Ensure other files are closed
-  }
-});
+// collection.files.forEach((f, index) => {
+//   if (index === 0) {
+//     f.open = true; // Open first file tab
+//   } else {
+//     f.open = false; // Ensure other files are closed
+//   }
+// });
 /* TOGGLE TAB - END */
 </script>
