@@ -35,128 +35,17 @@
               <li>
                 You can have multiple Files per Collection. Those are
                 pre-defined static datasets.
-                <span class="label"
-                  >[screenshot <a href="#screenshot1">1</a> &
-                  <a href="#screenshot2">2</a>]</span
-                >
               </li>
               <li>
                 Or you can have the <strong>create</strong> option, so that you
                 can create detail pages, for example blog articles. Those are
                 dynamic datasets.
-                <span class="label">[screenshot 3]</span>
               </li>
               <li>
                 For List and Object fields you can make
                 <strong>subfields</strong>
               </li>
             </ul>
-          </section>
-
-          <h2>Config example:</h2>
-
-          <section class="section">
-            <div class="docs">
-              <div class="docs__section">
-                <ul>
-                  <li>
-                    General content (Collection)
-                    <span class="label">[screenshot 1]</span>
-                    <ul>
-                      <li>
-                        Buttons (File)
-                        <ul>
-                          <li>Label (String field)</li>
-                          <li>Link (String field)</li>
-                        </ul>
-                      </li>
-                      <li>
-                        General labels (File)
-                        <ul>
-                          <li>Label 1 (String field)</li>
-                          <li>Label 2 (String field)</li>
-                          <li>Label 3 (String field)</li>
-                        </ul>
-                      </li>
-                      <li>
-                        Footer (File)
-                        <ul>
-                          <li>Copyright text (String field)</li>
-                        </ul>
-                      </li>
-                      <li>
-                        Socials (File)
-                        <ul>
-                          <li>
-                            Socials (List field)
-                            <ul>
-                              <li>Title (String field)</li>
-                              <li>Link (String field)</li>
-                              <li>Icon (Image field)</li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    Pages (Collection) <span class="label">[screenshot 2]</span>
-                    <ul>
-                      <li>
-                        Home (File)
-                        <ul>
-                          <li>Title (String field)</li>
-                          <li>Description (Text field)</li>
-                        </ul>
-                      </li>
-                      <li>
-                        About (File)
-                        <ul>
-                          <li>Title (String field)</li>
-                          <li>Description (Text field)</li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    Blogs (Collection) <span class="label">[screenshot 3]</span>
-                    <ul>
-                      <li>
-                        Blog 1 (Created item)
-                        <ul>
-                          <li>Title (String field)</li>
-                          <li>Excerpt (Text field)</li>
-                          <li>Image (Image field)</li>
-                          <li>Content (Markdown field)</li>
-                        </ul>
-                      </li>
-
-                      <li>
-                        Blog 2 (Created item)
-                        <ul>
-                          <li>Title (String field)</li>
-                          <li>Excerpt (Text field)</li>
-                          <li>Image (Image field)</li>
-                          <li>Content (Markdown field)</li>
-                        </ul>
-                      </li>
-
-                      <li>
-                        Blog 3 (Created item)
-                        <ul>
-                          <li>Title (String field)</li>
-                          <li>Excerpt (Text field)</li>
-                          <li>Image (Image field)</li>
-                          <li>Content (Markdown field)</li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </section>
         </div>
       </div>

@@ -67,6 +67,7 @@
             </div>
           </section>
 
+          <!-- Save config -->
           <section class="section">
             <h3>Save config.yml</h3>
             <button @click="generateConfig" class="button">
@@ -95,6 +96,7 @@
         <div class="sections__header">
           <h2>Collections</h2>
 
+          <!-- Add collection -->
           <button @click="addCollection" class="button">
             <svg
               width="14"
@@ -195,148 +197,87 @@
             >
               <h4>Collection files:</h4>
 
+              <ul class="files__tab-nav">
+                <li
+                  v-for="(file, fileIndex) in collection.files"
+                  :key="fileIndex"
+                  class="file__tab"
+                  :class="file.open ? 'file--active' : 'file--inactive'"
+                >
+                  <button
+                    class="file__header"
+                    @click="toggleTab(file, collection)"
+                  >
+                    <h5>File #{{ fileIndex + 1 }}: {{ file.label }}</h5>
+                  </button>
+                </li>
+              </ul>
+
               <ul class="files__inner">
                 <li
                   v-for="(file, fileIndex) in collection.files"
                   :key="fileIndex"
                   class="file"
+                  :class="file.open ? 'file--active' : 'file--inactive'"
+                  ref="file"
                 >
-                  <h5>File #{{ fileIndex + 1 }}: {{ file.label }}</h5>
+                  <div class="file__inner">
+                    <!-- File info -->
+                    <div class="input__fields file__input-fields">
+                      <div class="input__field">
+                        <label>File label</label>
+                        <input v-model="file.label" placeholder="File Label" />
+                      </div>
 
-                  <div class="input__fields file__input-fields">
-                    <div class="input__field">
-                      <label>File label</label>
-                      <input v-model="file.label" placeholder="File Label" />
+                      <div class="input__field">
+                        <label>File name</label>
+                        <input
+                          v-model="file.name"
+                          :placeholder="customCamelize(file.label)"
+                        />
+                      </div>
+
+                      <div class="input__field">
+                        <label>File path</label>
+                        <input v-model="file.file" placeholder="File Path" />
+                      </div>
                     </div>
 
-                    <div class="input__field">
-                      <label>File name</label>
-                      <input
-                        v-model="file.name"
-                        :placeholder="customCamelize(file.label)"
-                      />
-                    </div>
+                    <!-- Display fields for each file -->
+                    <div v-if="file.fields" class="file__fields">
+                      <h6>File fields:</h6>
 
-                    <div class="input__field">
-                      <label>File path</label>
-                      <input v-model="file.file" placeholder="File Path" />
-                    </div>
-                  </div>
+                      <div class="fields__header">
+                        <label>Field label</label>
+                        <label>Field name</label>
+                        <label>Field label</label>
+                        <label>Required</label>
+                      </div>
 
-                  <!-- Display fields for each file -->
-                  <div v-if="file.fields" class="file__fields">
-                    <h6>File fields:</h6>
-
-                    <div class="fields__header">
-                      <label>Field label</label>
-                      <label>Field name</label>
-                      <label>Field label</label>
-                      <label>Required</label>
-                    </div>
-
-                    <ul class="file__fields__inner">
-                      <li
-                        v-for="(field, fieldIndex) in file.fields"
-                        :key="fieldIndex"
-                        class="file__field"
-                      >
-                        <template v-if="!isAnchorReference(field)">
-                          <div class="input__fields">
-                            <div class="input__field">
-                              <input
-                                v-model="field.label"
-                                placeholder="Field Label"
-                              />
-                            </div>
-
-                            <div class="input__field">
-                              <input
-                                v-model="field.name"
-                                :placeholder="customCamelize(field.label)"
-                              />
-                            </div>
-
-                            <div class="input__field">
-                              <select v-model="field.widget">
-                                <option value="string">String</option>
-                                <option value="text">Text</option>
-                                <option value="datetime">DateTime</option>
-                                <option value="markdown">Markdown</option>
-                                <option value="boolean">Boolean</option>
-                                <option value="code">Code</option>
-                                <option value="color">Color</option>
-                                <option value="file">File</option>
-                                <option value="hidden">Hidden</option>
-                                <option value="image">Image</option>
-                                <option value="list">List</option>
-                                <option value="map">Map</option>
-                                <option value="number">Number</option>
-                                <option value="object">Object</option>
-                                <option value="relation">Relation</option>
-                                <option value="select">Select</option>
-                              </select>
-                            </div>
-
-                            <div class="input__checkbox-field">
-                              <input
-                                v-model="field.required"
-                                type="checkbox"
-                                id="required"
-                              />
-                              <label for="required">Required</label>
-                            </div>
-                          </div>
-                        </template>
-
-                        <template v-else-if="field === '*seo'">
-                          <div class="seo-fields">
-                            <h5 class="font-bold">SEO Fields:</h5>
-                            <div
-                              v-for="seoField in seoFields"
-                              :key="seoField.name"
-                            >
-                              <input
-                                v-model="seoField.value"
-                                :placeholder="seoField.label"
-                              />
-                            </div>
-                          </div>
-                        </template>
-
-                        <template v-else>
-                          <p>
-                            <strong> SEO Fields (referenced) </strong>
-                          </p>
-                        </template>
-
-                        <!-- Display subfields for each file field -->
-                        <div v-if="field.fields" class="subfields__wrapper">
-                          <h6 class="subfields__label">
-                            {{ field.label }} Subfields:
-                          </h6>
-
-                          <ul class="subfields">
-                            <li
-                              v-for="(subfield, subfieldIndex) in field.fields"
-                              :key="subfieldIndex"
-                              class="input__fields"
-                            >
+                      <ul class="file__fields__inner">
+                        <li
+                          v-for="(field, fieldIndex) in file.fields"
+                          :key="fieldIndex"
+                          class="file__field"
+                        >
+                          <template v-if="!isAnchorReference(field)">
+                            <div class="input__fields">
                               <div class="input__field">
                                 <input
-                                  v-model="subfield.label"
-                                  placeholder="Subfield Label"
+                                  v-model="field.label"
+                                  placeholder="Field Label"
                                 />
                               </div>
 
                               <div class="input__field">
                                 <input
-                                  v-model="subfield.name"
-                                  :placeholder="customSlugify(subfield.label)"
+                                  v-model="field.name"
+                                  :placeholder="customCamelize(field.label)"
                                 />
                               </div>
 
                               <div class="input__field">
-                                <select v-model="subfield.widget">
+                                <select v-model="field.widget">
                                   <option value="string">String</option>
                                   <option value="text">Text</option>
                                   <option value="datetime">DateTime</option>
@@ -355,52 +296,135 @@
                                   <option value="select">Select</option>
                                 </select>
                               </div>
-                            </li>
-                          </ul>
 
-                          <button
-                            @click="addSubfield(field)"
-                            class="button"
-                            v-if="
-                              field.widget == 'list' || field.widget == 'object'
-                            "
-                          >
-                            <svg
-                              width="14"
-                              height="14"
-                              viewBox="0 0 14 14"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
+                              <div class="input__checkbox-field">
+                                <input
+                                  v-model="field.required"
+                                  type="checkbox"
+                                  id="required"
+                                />
+                                <label for="required">Required</label>
+                              </div>
+                            </div>
+                          </template>
+
+                          <template v-else-if="field === '*seo'">
+                            <div class="seo-fields">
+                              <h5 class="font-bold">SEO Fields:</h5>
+                              <div
+                                v-for="seoField in seoFields"
+                                :key="seoField.name"
+                              >
+                                <input
+                                  v-model="seoField.value"
+                                  :placeholder="seoField.label"
+                                />
+                              </div>
+                            </div>
+                          </template>
+
+                          <template v-else>
+                            <p>
+                              <strong> SEO Fields (referenced) </strong>
+                            </p>
+                          </template>
+
+                          <!-- Display subfields for each file field -->
+                          <div v-if="field.fields" class="subfields__wrapper">
+                            <h6 class="subfields__label">
+                              {{ field.label }} Subfields:
+                            </h6>
+
+                            <ul class="subfields">
+                              <li
+                                v-for="(
+                                  subfield, subfieldIndex
+                                ) in field.fields"
+                                :key="subfieldIndex"
+                                class="input__fields"
+                              >
+                                <div class="input__field">
+                                  <input
+                                    v-model="subfield.label"
+                                    placeholder="Subfield Label"
+                                  />
+                                </div>
+
+                                <div class="input__field">
+                                  <input
+                                    v-model="subfield.name"
+                                    :placeholder="customSlugify(subfield.label)"
+                                  />
+                                </div>
+
+                                <div class="input__field">
+                                  <select v-model="subfield.widget">
+                                    <option value="string">String</option>
+                                    <option value="text">Text</option>
+                                    <option value="datetime">DateTime</option>
+                                    <option value="markdown">Markdown</option>
+                                    <option value="boolean">Boolean</option>
+                                    <option value="code">Code</option>
+                                    <option value="color">Color</option>
+                                    <option value="file">File</option>
+                                    <option value="hidden">Hidden</option>
+                                    <option value="image">Image</option>
+                                    <option value="list">List</option>
+                                    <option value="map">Map</option>
+                                    <option value="number">Number</option>
+                                    <option value="object">Object</option>
+                                    <option value="relation">Relation</option>
+                                    <option value="select">Select</option>
+                                  </select>
+                                </div>
+                              </li>
+                            </ul>
+
+                            <button
+                              @click="addSubfield(field)"
+                              class="button"
+                              v-if="
+                                field.widget == 'list' ||
+                                field.widget == 'object'
+                              "
                             >
-                              <path
-                                d="M14 7.998H8V13.998H6V7.998H0V5.998H6V-0.00199986H8V5.998H14V7.998Z"
-                                fill="#232323"
-                              />
-                            </svg>
-                            Add Subfield
-                          </button>
-                        </div>
-                      </li>
-                    </ul>
+                              <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 14 14"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M14 7.998H8V13.998H6V7.998H0V5.998H6V-0.00199986H8V5.998H14V7.998Z"
+                                  fill="#232323"
+                                />
+                              </svg>
+                              Add Subfield
+                            </button>
+                          </div>
+                        </li>
+                      </ul>
 
-                    <button
-                      @click="addField(file)"
-                      class="file__fields__button"
-                    >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
+                      <button
+                        @click="addField(file)"
+                        class="file__fields__button"
                       >
-                        <path
-                          d="M14 7.998H8V13.998H6V7.998H0V5.998H6V-0.00199986H8V5.998H14V7.998Z"
-                          fill="#232323"
-                        />
-                      </svg>
-                      Add Field
-                    </button>
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M14 7.998H8V13.998H6V7.998H0V5.998H6V-0.00199986H8V5.998H14V7.998Z"
+                            fill="#232323"
+                          />
+                        </svg>
+                        Add Field
+                      </button>
+                    </div>
                   </div>
                 </li>
               </ul>
@@ -940,4 +964,23 @@ function toggleCollapse(collection) {
   collection.collapsed = !collection.collapsed;
 }
 /* COLLAPSIBLE SECTION - END */
+
+/* TOGGLE TAB - START */
+function toggleTab(file, collection) {
+  // Close all other files in the specified collection
+  collection.files.forEach((f) => {
+    f.open = false; // Close other files
+  });
+  file.open = true; // Open the selected file
+}
+
+// Ensure to call this function in the right context where 'collection' is defined
+collection.files.forEach((f, index) => {
+  if (index === 0) {
+    f.open = true; // Open first file tab
+  } else {
+    f.open = false; // Ensure other files are closed
+  }
+});
+/* TOGGLE TAB - END */
 </script>
