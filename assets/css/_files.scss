@@ -5,17 +5,6 @@
   gap: 15px;
   flex-direction: column;
 
-  // &::before {
-  //   content: "";
-  //   height: calc(100% - 27px - 40px);
-  //   width: 1px;
-  //   background-color: rgba(0, 0, 0, 0.1);
-  //   position: absolute;
-  //   left: 1px;
-  //   top: 27px;
-  //   bottom: 0;
-  // }
-
   &__inner {
     display: flex;
     padding: 10px;
@@ -23,9 +12,6 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     flex-direction: column;
-    // flex-wrap: wrap;
-    // gap: 20px;
-    // flex-direction: column;
   }
 
   &__tab-nav {
@@ -67,27 +53,6 @@
   gap: 20px;
   position: relative;
 
-  // &::before {
-  //   content: "";
-  //   height: 1px;
-  //   width: 30px;
-  //   background-color: rgba(0, 0, 0, 0.1);
-  //   position: absolute;
-  //   left: -38px;
-  //   top: 10px;
-  // }
-
-  // &::after {
-  //   content: "";
-  //   height: 5px;
-  //   width: 5px;
-  //   background-color: rgba(0, 0, 0, 0.1);
-  //   position: absolute;
-  //   left: -10px;
-  //   top: 8px;
-  //   border-radius: 3px;
-  // }
-
   &--active {
     .file__header {
       background-color: var(--secondary-color);
@@ -116,20 +81,8 @@
     gap: 10px;
 
     &__inner {
-      padding-top: 10px;
       position: relative;
       list-style: none;
-
-      // &::before {
-      //   content: "";
-      //   height: 100%;
-      //   width: 1px;
-      //   background-color: rgba(0, 0, 0, 0.1);
-      //   position: absolute;
-      //   left: 1px;
-      //   top: 0;
-      //   bottom: 0;
-      // }
 
       .input__fields {
         display: flex;
@@ -144,16 +97,6 @@
 
   &__field {
     position: relative;
-
-    // &::before {
-    //   content: "";
-    //   height: 1px;
-    //   width: 30px;
-    //   background-color: rgba(0, 0, 0, 0.1);
-    //   position: absolute;
-    //   left: -38px;
-    //   top: 17px;
-    // }
   }
 
   &__input-fields {

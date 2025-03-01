@@ -6,7 +6,7 @@
   }
 
   &__labels {
-    padding-left: 75px;
+    padding-left: 30px;
   }
 
   &__details {
@@ -19,17 +19,6 @@
   &__fields {
     position: relative;
     list-style: none;
-
-    &::before {
-      content: "";
-      height: 100%;
-      width: 1px;
-      background-color: rgba(0, 0, 0, 0.1);
-      position: absolute;
-      left: 1px;
-      top: -21px;
-      bottom: 0;
-    }
 
     &__header {
       padding-bottom: 10px;
@@ -48,16 +37,6 @@
 
     .draggable-field {
       position: relative;
-
-      &::before {
-        content: "";
-        height: 1px;
-        width: 25px;
-        background-color: rgba(0, 0, 0, 0.1);
-        position: absolute;
-        left: -38px;
-        top: 18px;
-      }
     }
   }
 }

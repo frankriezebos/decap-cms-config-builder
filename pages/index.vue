@@ -303,7 +303,6 @@
                                   type="checkbox"
                                   id="required"
                                 />
-                                <label for="required">Required</label>
                               </div>
                             </div>
                           </template>
@@ -527,9 +526,6 @@
                               v-model="field.required"
                               :id="'required-' + fieldIndex"
                             />
-                            <label :for="'required-' + fieldIndex"
-                              >Required</label
-                            >
                           </div>
                         </div>
                       </div>
@@ -614,9 +610,6 @@
                                   v-model="subfield.required"
                                   :id="'required-' + subfieldIndex"
                                 />
-                                <label :for="'required-' + subfieldIndex"
-                                  >Required</label
-                                >
                               </div>
                             </div>
                           </div>
@@ -788,10 +781,8 @@ const seoFields = ref([
 // Define the reactive references for indices
 let draggedIndex = ref(-1);
 let draggedCollectionIndex = ref(-1);
-let draggedFileIndex = ref(-1);
 
 function dragStart(event, index, collectionIndex) {
-  console.log("Dragging from:", { index, collectionIndex });
   draggedIndex.value = index;
   draggedCollectionIndex.value = collectionIndex;
   event.dataTransfer.effectAllowed = "move";
@@ -804,7 +795,6 @@ function dragOver(event) {
 
 function drop(event, targetIndex, collectionIndex) {
   event.preventDefault();
-  console.log("Dropping into:", { targetIndex, collectionIndex });
 
   if (typeof collectionIndex === "undefined") {
     console.error("Collection index is undefined during drop.");
@@ -962,6 +952,16 @@ function generateConfig() {
 /* COLLAPSIBLE SECTION - START */
 function toggleCollapse(collection) {
   collection.collapsed = !collection.collapsed;
+
+  if (collection.files) {
+    collection.files.forEach((f, index) => {
+      if (index === 0) {
+        f.open = true; // Open first file tab
+      } else {
+        f.open = false; // Ensure other files are closed
+      }
+    });
+  }
 }
 /* COLLAPSIBLE SECTION - END */
 
@@ -973,14 +973,5 @@ function toggleTab(file, collection) {
   });
   file.open = true; // Open the selected file
 }
-
-// Ensure to call this function in the right context where 'collection' is defined
-// collection.files.forEach((f, index) => {
-//   if (index === 0) {
-//     f.open = true; // Open first file tab
-//   } else {
-//     f.open = false; // Ensure other files are closed
-//   }
-// });
 /* TOGGLE TAB - END */
 </script>

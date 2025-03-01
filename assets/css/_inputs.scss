@@ -1,7 +1,7 @@
 input,
 select,
 textarea {
-  padding: 8px 5px;
+  padding: 8px 0px;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -63,12 +63,18 @@ label,
     flex-wrap: wrap;
     flex-direction: column;
     width: 100%;
+
+    &:last-of-type {
+      max-width: 100px;
+    }
   }
 
   &__checkbox-field {
     display: flex;
     gap: 10px;
     align-items: center;
+    width: 100%;
+    max-width: 100px;
   }
 }
 
@@ -79,6 +85,10 @@ label,
 
     label {
       width: 100%;
+
+      &:last-of-type {
+        max-width: 100px;
+      }
     }
   }
 }
@@ -106,33 +116,8 @@ label,
     padding-left: 32px;
   }
 
-  &__label {
-    padding-left: 32px;
-  }
-
-  &::before {
-    content: "";
-    height: 100%;
-    width: 1px;
-    background-color: rgba(0, 0, 0, 0.1);
-    position: absolute;
-    left: 1px;
-    top: -21px;
-    bottom: 0;
-  }
-
   .input__fields {
     position: relative;
-
-    &::before {
-      content: "";
-      height: 1px;
-      width: 22px;
-      background-color: rgba(0, 0, 0, 0.1);
-      position: absolute;
-      left: -38px;
-      top: 15px;
-    }
   }
 
   &__header {
